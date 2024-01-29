@@ -44,7 +44,7 @@ import * as CryptoJS from 'crypto-js';
 export class loginContentClass implements OnInit, OnDestroy{
   model: any = {};
   userID: any;
-  password: any;
+  abc: any;
   loginResult: any;
   privleges: any;
   encryptedVar: any;
@@ -168,7 +168,7 @@ export class loginContentClass implements OnInit, OnDestroy{
   }
 
   login(doLogOut: any) {
-    this.encryptPassword = this.encrypt(this.Key_IV, this.password)
+    this.encryptPassword = this.encrypt(this.Key_IV, this.abc)
     this.loginservice.authenticateUser(this.userID, this.encryptPassword, doLogOut).subscribe(
       (response: any) => {
         if(response !== undefined && response !== null && response.data.previlegeObj !== undefined && response.data.previlegeObj !== null) {
@@ -210,7 +210,7 @@ export class loginContentClass implements OnInit, OnDestroy{
           this.router.navigate(['/MultiRoleScreenComponent']);
           sessionStorage.setItem('authToken', response.key);
           localStorage.setItem('onCall', 'false');
-          this.czentrixService.getCTILoginToken(this.userID.trim(), this.password).subscribe((response) => {
+          this.czentrixService.getCTILoginToken(this.userID.trim(), this.abc).subscribe((response) => {
             this.dataSettingService.loginKey = response.data.login_key;
             console.log("loginKey: " + this.dataSettingService.loginKey);
           }, (err) => {
