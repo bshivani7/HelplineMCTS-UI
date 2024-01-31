@@ -592,7 +592,8 @@ export class InnerClosureOutbondcallComponent implements OnInit {
       "isTransfered": this.transfer,
       "isTransferedToANM": this.transferToANM,
       "isTransferedTo104": this.transferTo104,
-      "remarks": (this.remarks !== undefined && this.remarks !== null) ? this.remarks.trim() : null
+      "remarks": (this.remarks !== undefined && this.remarks !== null) ? this.remarks.trim() : null,
+      "isOutbound": true
     };
     if (tempArr.length > 0) {
       this.postData['childCongenitalAnomaliesDetails'] = tempArr;
